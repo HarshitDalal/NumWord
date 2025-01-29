@@ -8,7 +8,7 @@ class LoggerConfig(logging.Logger):
     A class to configure logging settings for an application.
     """
 
-    def __init__(self, app_name, streams=('console', 'file'), file_name='WordToNumTest.log'):
+    def __init__(self, app_name, streams=('console', 'file'), file_name='NumWord.log'):
         """
         Initialize LoggerConfig with given parameters.
 

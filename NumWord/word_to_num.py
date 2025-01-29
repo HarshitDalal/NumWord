@@ -1,4 +1,4 @@
-from WordToNum import GetLanguage
+from NumWord import GetLanguage
 
 
 class WordToNum:

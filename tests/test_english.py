@@ -1,10 +1,10 @@
 import unittest
 
 from Logs import LoggerConfig
-from WordToNum.word_to_num import WordToNum
+from NumWord import WordToNum
 
 
-class TestWordToNumSpark(unittest.TestCase):
+class TestWordToNum(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
