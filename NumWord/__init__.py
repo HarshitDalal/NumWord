@@ -1,5 +1,4 @@
 from .english import ENGLISH
-from .word_to_num import WordToNum
 
 class GetLanguage:
     def get_language(self, language):

@@ -1,7 +1,7 @@
 import unittest
 
 from Logs import LoggerConfig
-from NumWord import WordToNum
+from NumWord.word_to_num import WordToNum
 
 
 class TestWordToNum(unittest.TestCase):
