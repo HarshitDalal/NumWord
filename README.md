@@ -2,7 +2,9 @@
 
 ![Manual Test](https://github.com/HarshitDalal/numword/actions/workflows/manual_test.yml/badge.svg)
 ![Daily Test](https://github.com/HarshitDalal/numword/actions/workflows/daily_test.yml/badge.svg)
-![MIT License](https://img.shields.io/github/license/HarshitDalal/numword)
+
+
+
 NumWord is a Python package that converts numbers written in words to their numerical representation.
 
 ## Features
