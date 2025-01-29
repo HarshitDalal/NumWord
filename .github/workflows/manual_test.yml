@@ -6,7 +6,10 @@ on:
       branch:
         description: 'Branch to test'
         required: true
-        default: 'main'
+        type: choice
+        options:
+          - main
+          - develop
 
 jobs:
   test:
