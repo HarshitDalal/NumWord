@@ -2,14 +2,6 @@ name: Manual Test
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to test'
-        required: true
-        type: choice
-        options:
-          - main
-          - develop
 
 jobs:
   test:
@@ -18,8 +10,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      with:
-        ref: ${{ github.event.inputs.branch }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
