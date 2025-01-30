@@ -2,8 +2,8 @@
 
 ![Manual Test](https://github.com/HarshitDalal/numword/actions/workflows/manual_test.yml/badge.svg)
 ![Daily Test](https://github.com/HarshitDalal/numword/actions/workflows/daily_test.yml/badge.svg)
-
-
+![PyPI](https://img.shields.io/pypi/v/NumWord)
+![PyPI Downloads](https://img.shields.io/pypi/dm/NumWord)
 
 NumWord is a Python package that converts numbers written in words to their numerical representation.
 
@@ -23,7 +23,7 @@ pip install -r requirements.txt
 ## Usage
 Here is an example of how to use the NumWord package:
 ```python
-from NumWord import WordToNum
+from NumWord.word_to_num import WordToNum
 
 converter = WordToNum(lang='en')
 result = converter.words_to_number("one hundred twenty three point four five six")
