@@ -26,10 +26,19 @@ jobs:
 
     - name: Run tests
       run: |
-        python -m unittest discover -s tests
+        coverage run --branch -m unittest discover -s tests
+
+    - name: Generate coverage report
+      run: |
+        coverage xml
 
     - name: Upload log files
       uses: actions/upload-artifact@v4
       with:
         name: log-files
         path: NumWord.log
+
+    - name: Upload results to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+          token: ${{ secrets.CODECOV_TOKEN }}
