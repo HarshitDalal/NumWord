@@ -1,4 +1,4 @@
-ENGLISH = {
+ENGLISH_WORD_NUM = {
     "zero": 0,
     "one": 1,
     "two": 2,
@@ -40,4 +40,11 @@ ENGLISH = {
     "nonillion": 1000000000000000000000000000000,
 }
 
-
+ENGLISH_NUM_WORDS = {
+    "UNIT": ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
+    "TEENS": ["", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+              "nineteen"],
+    "TENS": ["", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"],
+    "THOUSANDS": ["", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion",
+                  "septillion", "octillion", "nonillion"]
+}
