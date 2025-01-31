@@ -9,20 +9,49 @@ class NumberToWord:
         self.thousands = GetLanguage().get_language(lang)[1]["THOUSANDS"]
 
     def convert_hundreds(self, number):
+        """
+        Convert a number in the hundreds range to its word representation.
+
+        Args:
+            number (int): The number to convert.
+
+        Returns:
+            str: The word representation of the number.
+        """
         if number > 99:
             return self.units[number // 100] + " hundred " + self.convert_tens(number % 100)
         else:
             return self.convert_tens(number)
 
     def convert_tens(self, number):
+        """
+        Convert a number in the tens range to its word representation.
+
+        Args:
+            number (int): The number to convert.
+
+        Returns:
+            str: The word representation of the number.
+        """
         if number < 10:
             return self.units[number]
-        elif number < 20:
+        elif 10 < number < 20:
             return self.teens[number - 10]
         else:
+            if number % 10 == 0:
+                return self.tens[number // 10]
             return self.tens[number // 10] + " " + self.units[number % 10]
 
     def convert_thousands(self, number):
+        """
+        Convert a number in the thousands range to its word representation.
+
+        Args:
+            number (int): The number to convert.
+
+        Returns:
+            str: The word representation of the number.
+        """
         if number == 0:
             return ""
         elif number < 1000:
@@ -30,14 +59,33 @@ class NumberToWord:
         else:
             for idx, word in enumerate(self.thousands):
                 if number < 1000 ** (idx + 1):
-                    return self.convert_thousands(number // (1000 ** idx)) + " " + self.thousands[idx] + " " + self.convert_thousands(number % (1000 ** idx))
+                    return self.convert_thousands(number // (1000 ** idx)) + " " + self.thousands[
+                        idx] + " " + self.convert_thousands(number % (1000 ** idx))
 
     def convert_decimal(self, number):
+        """
+        Convert the decimal part of a number to its word representation.
+
+        Args:
+            number (float): The number to convert.
+
+        Returns:
+            str: The word representation of the decimal part of the number.
+        """
         decimal_part = str(number).split(".")[1]
         decimal_words = " ".join(self.units[int(digit)] for digit in decimal_part)
         return "point " + decimal_words
 
     def convert(self, number):
+        """
+        Convert a number to its word representation.
+
+        Args:
+            number (int or float): The number to convert.
+
+        Returns:
+            str: The word representation of the number.
+        """
         if number == 0:
             return "zero"
         elif number < 0:

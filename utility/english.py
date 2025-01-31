@@ -48,3 +48,4 @@ ENGLISH_NUM_WORDS = {
     "THOUSANDS": ["", "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion",
                   "septillion", "octillion", "nonillion"]
 }
+

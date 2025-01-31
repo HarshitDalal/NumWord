@@ -48,18 +48,37 @@ class TestWordToNum(unittest.TestCase):
 
     def test_million_number(self):
         result = self.word_to_num.convert("one million two hundred thirty four thousand five hundred sixty seven")
-        self.logger.info(f"Test million number: 'one million two hundred thirty four thousand five hundred sixty seven' -> {result}")
+        self.logger.info(
+            f"Test million number: 'one million two hundred thirty four thousand five hundred sixty seven' -> {result}")
         self.assertEqual(result, 1234567)
 
     def test_trillion_number(self):
-        result = self.word_to_num.convert("one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
-        self.logger.info(f"Test trillion number: 'one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three' -> {result}")
+        result = self.word_to_num.convert(
+            "one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
+        self.logger.info(
+            f"Test trillion number: 'one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three' -> {result}")
         self.assertEqual(result, 1234567890123)
 
     def test_quintillion_number(self):
-        result = self.word_to_num.convert("one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
-        self.logger.info(f"Test quintillion number: 'one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine' -> {result}")
+        result = self.word_to_num.convert(
+            "one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
+        self.logger.info(
+            f"Test quintillion number: 'one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine' -> {result}")
         self.assertEqual(result, 1234567890123456789)
+
+    def test_invalid_word(self):
+        with self.assertRaises(ValueError):
+            self.word_to_num.convert("invalid")
+
+    def test_number_in_words(self):
+        result = self.word_to_num.convert("one hundred 23 point four five six")
+        self.logger.info(f"Test number in words: 'one hundred 23 point four five six' -> {result}")
+        self.assertEqual(result, 123.456)
+
+    def test_decimal_digit(self):
+        result = self.word_to_num.convert("one point 0 five")
+        self.logger.info(f"Test decimal digit: 'one point 0 five' -> {result}")
+        self.assertEqual(result, 1.05)
 
 
 class TestNumToWord(unittest.TestCase):
@@ -83,6 +102,26 @@ class TestNumToWord(unittest.TestCase):
         result = self.num_to_word.convert(21)
         self.logger.info(f"Test two digits: 21 -> {result}")
         self.assertEqual(result, "twenty one")
+
+    def test_teen_number(self):
+        result = self.num_to_word.convert(15)
+        self.logger.info(f"Test teen number: 15 -> {result}")
+        self.assertEqual(result, "fifteen")
+
+    def test_ten_number(self):
+        result = self.num_to_word.convert(10)
+        self.logger.info(f"Test ten number: 10 -> {result}")
+        self.assertEqual(result, "ten")
+
+    def test_zero_number(self):
+        result = self.num_to_word.convert(0)
+        self.logger.info(f"Test zero number: 0 -> {result}")
+        self.assertEqual(result, "zero")
+
+    def test_hundred_number(self):
+        result = self.num_to_word.convert(115)
+        self.logger.info(f"Test hundred number: 115 -> {result}")
+        self.assertEqual(result, "one hundred fifteen")
 
     def test_large_number(self):
         result = self.num_to_word.convert(1234)
@@ -112,13 +151,23 @@ class TestNumToWord(unittest.TestCase):
     def test_trillion_number(self):
         result = self.num_to_word.convert(1234567890123)
         self.logger.info(f"Test trillion number: 1234567890123 -> {result}")
-        self.assertEqual(result, "one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
+        self.assertEqual(result,
+                         "one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
 
     def test_quintillion_number(self):
         result = self.num_to_word.convert(1234567890123456789)
         self.logger.info(f"Test quintillion number: 1234567890123456789 -> {result}")
-        self.assertEqual(result, "one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
+        self.assertEqual(result,
+                         "one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
 
+    def test_hundred_then_thousand(self):
+        result = self.num_to_word.convert(105000)
+        self.logger.info(f"Test hundred then thousand: 105000 -> {result}")
+        self.assertEqual(result, "one hundred five thousand")
+
+    def test_more_then_nonillion(self):
+        with self.assertRaises(AttributeError):
+            self.num_to_word.convert(1000000000000000000000000000000000)
 
 if __name__ == '__main__':
     unittest.main()
