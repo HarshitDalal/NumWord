@@ -1,4 +1,4 @@
-name: Daily Test
+name: Daily Test Workflow
 
 on:
   schedule:
