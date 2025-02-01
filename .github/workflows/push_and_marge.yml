@@ -1,20 +1,22 @@
-name: Manual Test Workflow
+name: Push and Merge Workflow
 
 on:
-  workflow_dispatch:
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: '3.x'
 
     - name: Install dependencies
       run: |
