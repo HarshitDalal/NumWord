@@ -46,7 +46,7 @@ class NumberToWord:
         else:
             if number % 10 == 0:
                 return self.tens[number // 10]
-            return self.tens[number // 10] + " " + self.units[number % 10]
+            return self.tens[number // 10] + "-" + self.units[number % 10]
 
     def convert_thousands(self, number, lang):
         """

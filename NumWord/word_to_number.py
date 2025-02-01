@@ -18,7 +18,7 @@ class WordToNumber:
             int | float: The numerical representation of the number.
         """
         self.__get_words(lang)
-        words = words.split()
+        words = words.replace("-", " ").split()
         total, current, decimal_part, decimal_place = 0, 0, 0, 0.1
         is_decimal, is_negative = False, False
 

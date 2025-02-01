@@ -14,6 +14,7 @@ NumWord is a Python package that converts numbers written in words to their nume
 - Convert single digits, two digits, large numbers, decimal numbers, and mixed numbers from words to numbers.
 - Convert numbers to words.
 - Supports English language.
+- Supports Hindi language.
 
 ## Installation
 
@@ -29,16 +30,29 @@ Here is an example of how to use the NumWord package:
 ```python
 from NumWord import WordToNumber, NumberToWord
 
-# Convert words to numbers
-word_to_num_converter = WordToNumber(lang='en')
+# Convert words to numbers in English
+word_to_num_converter = WordToNumber()
 result = word_to_num_converter.convert("one hundred twenty three point four five six")
 print(result)  # Output: 123.456
 
-# Convert numbers to words
-num_to_word_converter = NumberToWord(lang='en')
+# Convert numbers to words in English
+num_to_word_converter = NumberToWord()
 result = num_to_word_converter.convert(123.456)
-print(result)  # Output: one hundred twenty three point four five six
+print(result)  # Output: one hundred twenty-three point four five six
+
+
+# Convert words to numbers in Hindi
+word_to_num_converter = WordToNumber()
+result = word_to_num_converter.convert("एक सौ तेईस दशमलव चार पांच छह", lang='hi')
+print(result)  # Output: 123.456
+
+# Convert numbers to words in Hindi
+num_to_word_converter = NumberToWord()
+result = num_to_word_converter.convert(123.456, lang='hi')
+print(result)  # Output: एक सौ तेईस दशमलव चार पांच छह
 ``` 
+
+
 ## Running Tests
 To run the tests, use the following command:
 ```bash

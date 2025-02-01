@@ -22,18 +22,18 @@ class TestWordToNum(unittest.TestCase):
         self.assertEqual(result, 5)
 
     def test_two_digits(self):
-        result = self.word_to_num.convert("twenty one")
-        self.logger.info(f"Test two digits: 'twenty one' -> {result}")
+        result = self.word_to_num.convert("twenty-one")
+        self.logger.info(f"Test two digits: 'twenty-one' -> {result}")
         self.assertEqual(result, 21)
 
     def test_negative_number(self):
-        result = self.word_to_num.convert("negative one thousand two hundred thirty four")
-        self.logger.info(f"Test negative number: 'negative one thousand two hundred thirty four' -> {result}")
+        result = self.word_to_num.convert("negative one thousand two hundred thirty-four")
+        self.logger.info(f"Test negative number: 'negative one thousand two hundred thirty-four' -> {result}")
         self.assertEqual(result, -1234)
 
     def test_large_number(self):
-        result = self.word_to_num.convert("one thousand two hundred thirty four")
-        self.logger.info(f"Test large number: 'one thousand two hundred thirty four' -> {result}")
+        result = self.word_to_num.convert("one thousand two hundred thirty-four")
+        self.logger.info(f"Test large number: 'one thousand two hundred thirty-four' -> {result}")
         self.assertEqual(result, 1234)
 
     def test_decimal_number(self):
@@ -42,28 +42,28 @@ class TestWordToNum(unittest.TestCase):
         self.assertEqual(result, 1.5)
 
     def test_mixed_number(self):
-        result = self.word_to_num.convert("one hundred twenty three point four five six")
+        result = self.word_to_num.convert("one hundred twenty-three point four five six")
         self.logger.info(f"Test mixed number: 'one hundred twenty three point four five six' -> {result}")
         self.assertEqual(result, 123.456)
 
     def test_million_number(self):
-        result = self.word_to_num.convert("one million two hundred thirty four thousand five hundred sixty seven")
+        result = self.word_to_num.convert("one million two hundred thirty-four thousand five hundred sixty-seven")
         self.logger.info(
-            f"Test million number: 'one million two hundred thirty four thousand five hundred sixty seven' -> {result}")
+            f"Test million number: 'one million two hundred thirty-four thousand five hundred sixty-seven' -> {result}")
         self.assertEqual(result, 1234567)
 
     def test_trillion_number(self):
         result = self.word_to_num.convert(
-            "one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
+            "one trillion two hundred thirty-four billion five hundred sixty-seven million eight hundred ninety thousand one hundred twenty-three")
         self.logger.info(
-            f"Test trillion number: 'one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three' -> {result}")
+            f"Test trillion number: 'one trillion two hundred thirty-four billion five hundred sixty-seven million eight hundred ninety thousand one hundred twenty-three' -> {result}")
         self.assertEqual(result, 1234567890123)
 
     def test_quintillion_number(self):
         result = self.word_to_num.convert(
-            "one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
+            "one quintillion two hundred thirty-four quadrillion five hundred sixty-seven trillion eight hundred ninety billion one hundred twenty-three million four hundred fifty-six thousand seven hundred eighty-nine")
         self.logger.info(
-            f"Test quintillion number: 'one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine' -> {result}")
+            f"Test quintillion number: 'one quintillion two hundred thirty-four quadrillion five hundred sixty-seven trillion eight-hundred ninety billion one hundred twenty-three million four hundred fifty-six thousand seven hundred eighty-nine' -> {result}")
         self.assertEqual(result, 1234567890123456789)
 
     def test_invalid_word(self):
@@ -101,7 +101,7 @@ class TestNumToWord(unittest.TestCase):
     def test_two_digits(self):
         result = self.num_to_word.convert(21)
         self.logger.info(f"Test two digits: 21 -> {result}")
-        self.assertEqual(result, "twenty one")
+        self.assertEqual(result, "twenty-one")
 
     def test_teen_number(self):
         result = self.num_to_word.convert(15)
@@ -126,12 +126,12 @@ class TestNumToWord(unittest.TestCase):
     def test_large_number(self):
         result = self.num_to_word.convert(1234)
         self.logger.info(f"Test large number: 1234 -> {result}")
-        self.assertEqual(result, "one thousand two hundred thirty four")
+        self.assertEqual(result, "one thousand two hundred thirty-four")
 
     def test_negative_number(self):
         result = self.num_to_word.convert(-1234)
         self.logger.info(f"Test negative number: -1234 -> {result}")
-        self.assertEqual(result, "negative one thousand two hundred thirty four")
+        self.assertEqual(result, "negative one thousand two hundred thirty-four")
 
     def test_decimal_number(self):
         result = self.num_to_word.convert(1.5)
@@ -141,24 +141,24 @@ class TestNumToWord(unittest.TestCase):
     def test_mixed_number(self):
         result = self.num_to_word.convert(123.456)
         self.logger.info(f"Test mixed number: 123.456 -> {result}")
-        self.assertEqual(result, "one hundred twenty three point four five six")
+        self.assertEqual(result, "one hundred twenty-three point four five six")
 
     def test_million_number(self):
         result = self.num_to_word.convert(1234567)
         self.logger.info(f"Test million number: 1234567 -> {result}")
-        self.assertEqual(result, "one million two hundred thirty four thousand five hundred sixty seven")
+        self.assertEqual(result, "one million two hundred thirty-four thousand five hundred sixty-seven")
 
     def test_trillion_number(self):
         result = self.num_to_word.convert(1234567890123)
         self.logger.info(f"Test trillion number: 1234567890123 -> {result}")
         self.assertEqual(result,
-                         "one trillion two hundred thirty four billion five hundred sixty seven million eight hundred ninety thousand one hundred twenty three")
+                         "one trillion two hundred thirty-four billion five hundred sixty-seven million eight hundred ninety thousand one hundred twenty-three")
 
     def test_quintillion_number(self):
         result = self.num_to_word.convert(1234567890123456789)
         self.logger.info(f"Test quintillion number: 1234567890123456789 -> {result}")
         self.assertEqual(result,
-                         "one quintillion two hundred thirty four quadrillion five hundred sixty seven trillion eight hundred ninety billion one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine")
+                         "one quintillion two hundred thirty-four quadrillion five hundred sixty-seven trillion eight hundred ninety billion one hundred twenty-three million four hundred fifty-six thousand seven hundred eighty-nine")
 
     def test_hundred_then_thousand(self):
         result = self.num_to_word.convert(105000)
