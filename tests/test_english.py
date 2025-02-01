@@ -10,7 +10,7 @@ class TestWordToNum(unittest.TestCase):
     def setUpClass(cls):
         cls.logger = LoggerConfig(__name__).get_logger()
         cls.logger.info("TestWordToNum started.")
-        cls.word_to_num = WordToNumber(lang='en')
+        cls.word_to_num = WordToNumber()
 
     @classmethod
     def tearDownClass(cls):
@@ -169,6 +169,7 @@ class TestNumToWord(unittest.TestCase):
         result = self.num_to_word.convert(10 ** 30)
         self.logger.info(f"Test more than nonillion: {10 ** 30} -> {result}")
         self.assertEqual(result, "one nonillion")
+
 
 if __name__ == '__main__':
     unittest.main()

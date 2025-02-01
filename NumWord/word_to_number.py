@@ -2,20 +2,22 @@ from utility import GetLanguage
 
 
 class WordToNumber:
-    def __init__(self, lang="en"):
-        self.word_to_num = GetLanguage().get_language(lang)[0]
-        self.symbol = GetLanguage().get_language(lang)[2]
+    def __init__(self):
+        self.word_to_num = None
+        self.symbol = None
 
-    def convert(self, words):
+    def convert(self, words, lang="en"):
         """
         Convert a number in word form to its numerical representation.
 
         Args:
             words (str): The number in word form.
+            lang (str): The language to use for the conversion.
 
         Returns:
             int | float: The numerical representation of the number.
         """
+        self.__get_words(lang)
         words = words.split()
         total, current, decimal_part, decimal_place = 0, 0, 0, 0.1
         is_decimal, is_negative = False, False
@@ -118,3 +120,13 @@ class WordToNumber:
         else:
             current += scale
         return current, total
+
+    def __get_words(self, lang):
+        """
+        Get the words for the number conversion based on the language.
+
+        Args:
+            lang (str): The language to use for the conversion.
+        """
+        self.word_to_num = GetLanguage().get_language(lang)[0]
+        self.symbol = GetLanguage().get_language(lang)[2]
