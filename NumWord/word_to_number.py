@@ -4,6 +4,7 @@ from utility import GetLanguage
 class WordToNumber:
     def __init__(self, lang="en"):
         self.word_to_num = GetLanguage().get_language(lang)[0]
+        self.symbol = GetLanguage().get_language(lang)[2]
 
     def convert(self, words):
         """
@@ -20,9 +21,9 @@ class WordToNumber:
         is_decimal, is_negative = False, False
 
         for word in words:
-            if word == "negative":
+            if word == self.symbol[1]:
                 is_negative = True
-            elif word == "point":
+            elif word == self.symbol[0]:
                 is_decimal = True
             elif word.isdigit():
                 current, decimal_part, decimal_place = self.process_digit(word, is_decimal, current, decimal_part,

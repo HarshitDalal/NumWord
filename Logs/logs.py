@@ -47,13 +47,15 @@ class LoggerConfig(logging.Logger):
             'file': {
                 'class': 'logging.FileHandler',
                 'filename': self.__filename,
-                'formatter': 'default'
+                'formatter': 'default',
+                'encoding': 'utf-8'
             }
         } if self.__stream == ['console', 'file'] else {
             'file': {
                 'class': 'logging.FileHandler',
                 'filename': self.__filename,
-                'formatter': 'default'
+                'formatter': 'default',
+                'encoding': 'utf-8'
             }
         } if self.__stream == ['file'] else {
             'console': {

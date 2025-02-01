@@ -87,7 +87,7 @@ class TestNumToWord(unittest.TestCase):
     def setUpClass(cls):
         cls.logger = LoggerConfig(__name__).get_logger()
         cls.logger.info("TestNumToWord started.")
-        cls.num_to_word = NumberToWord(lang='en')
+        cls.num_to_word = NumberToWord()
 
     @classmethod
     def tearDownClass(cls):
@@ -166,8 +166,9 @@ class TestNumToWord(unittest.TestCase):
         self.assertEqual(result, "one hundred five thousand")
 
     def test_more_then_nonillion(self):
-        with self.assertRaises(AttributeError):
-            self.num_to_word.convert(1000000000000000000000000000000000)
+        result = self.num_to_word.convert(10 ** 30)
+        self.logger.info(f"Test more than nonillion: {10 ** 30} -> {result}")
+        self.assertEqual(result, "one nonillion")
 
 if __name__ == '__main__':
     unittest.main()
