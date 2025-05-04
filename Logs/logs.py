@@ -101,6 +101,11 @@ class LoggerConfig(logging.Logger):
         Returns:
             None: Configures the logger settings for the application.
         """
+        if 'file' in self.__stream:
+            log_dir = os.path.dirname(self.__filename)
+            if log_dir and not os.path.exists(log_dir):
+                os.makedirs(log_dir)
+
         logging.config.dictConfig(self.__log_config())
 
     def get_logger(self):

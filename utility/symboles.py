@@ -1,6 +1,8 @@
 SYMBOLS = {
     "en": ("point", "negative", "percent"),
-    "hi": ("दशमलव", "ऋणात्मक", "प्रतिशत")
+    "hi": ("दशमलव", "ऋणात्मक", "प्रतिशत"),
+    "de": ("Komma", "minus", "Prozent"),
+    "fr": ("virgule", "moins", "pourcent")
 }
 
 SUFFIXES = {
@@ -9,7 +11,13 @@ SUFFIXES = {
     'hi': [(3, " हजार"), (5, " लाख"), (7, " करोड़"), (9, " अरब"), (11, " खरब"), (13, " नील"), (15, " पद्म"),
            (17, " शंख"), (19, " अंत"), (21, " मध्य"), (23, " परार्ध"), (25, " धुन"), (27, " अशोहिनी")],
     'en-hi': [(3, "K"), (5, "L"), (7, "Cr"), (9, "Ar"), (11, "Kharab"), (13, "Nil"), (15, "Padm"), (17, "Shankh"),
-              (19, "Ant"), (21, "Madh"), (23, "Parardh"), (25, "Dhun"), (27, "Ashohini")]
+              (19, "Ant"), (21, "Madh"), (23, "Parardh"), (25, "Dhun"), (27, "Ashohini")],
+    'de': [(3, "tausend"), (6, "Million"), (9, "Milliarde"), (12, "Billion"), (15, "Billiarde"), (18, "Trillion"),
+           (21, "Trilliarde"), (24, "Quadrillion"), (27, "Quadrilliarde"), (30, "Quintillion"),
+           (33, "Quintilliarde"), (36, "Sextillion"), (39, "Sextilliarde")],
+    'fr': [(3, "mille"), (6, "million"), (9, "milliard"), (12, "billion"), (15, "billiard"), (18, "trillion"),
+           (21, "trilliard"), (24, "quadrillion"), (27, "quadrilliard"), (30, "quintillion"),
+           (33, "quintilliard"), (36, "sextillion"), (39, "sextilliard")]
 }
 
 CURRENCY_SYMBOLS = {
