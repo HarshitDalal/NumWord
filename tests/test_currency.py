@@ -9,7 +9,7 @@ class TestCurrency(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.logger = LoggerConfig(__name__).get_logger()
+        cls.logger = LoggerConfig(__name__, file_name="TestLogs/Currency_test.log").get_logger()
         cls.logger.info("TestCurrency started.")
         cls.currency = Currency()
 
@@ -18,7 +18,6 @@ class TestCurrency(unittest.TestCase):
         cls.logger.info("TestCurrency completed. \n -----------------")
 
     def test_currency_conversion_valid(self):
-
         result = self.currency.convert(100, "USD", "EUR", with_symbol=False)
         self.assertIsInstance(result, str)
         self.logger.info(f"Test Convert 100 USD to EUR without symbol -> {result}")
@@ -41,14 +40,12 @@ class TestCurrency(unittest.TestCase):
         self.assertGreater(len(rates), 0)
 
     def test_fetch_exchange_rates(self):
-
         data = self.currency._Currency__fetch_exchange_rates()
         self.logger.info(f"Test Base Code is USD -> {data['Base']}")
         self.assertEqual(data["Base"], "USD")
         self.assertGreater(len(data["rates"]), 0)
 
     def test_currency_conversion_with_live_data(self):
-
         self.logger.info(f"Test Cases with live exchange rates")
         result = self.currency.convert(100, "USD", "EUR", with_symbol=False)
         self.assertIsInstance(result, str)

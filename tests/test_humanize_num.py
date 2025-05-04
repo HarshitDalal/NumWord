@@ -10,7 +10,7 @@ class TestHumanizeNumber(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.logger = LoggerConfig(__name__).get_logger()
+        cls.logger = LoggerConfig(__name__, file_name="TestLogs/Humanize_test.log").get_logger()
         cls.logger.info("TestHumanizeNumber started.")
         cls.humanize_num = HumanizeNumber()
 

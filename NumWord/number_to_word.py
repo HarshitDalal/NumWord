@@ -37,6 +37,11 @@ class NumberToWord:
         Returns:
             str: The word representation of the number.
         """
+        if lang == "fr":
+            if 71 <= number <= 79:
+                return f"{self.convert_tens(60, lang)}-{self.convert_tens(number - 60, lang)}"
+            elif 91 <= number <= 99:
+                return f"{self.convert_tens(80, lang)}-{self.convert_tens(number - 80, lang)}"
         if number < 10:
             return self.units[number]
         elif 10 < number < 20:
@@ -46,7 +51,14 @@ class NumberToWord:
         else:
             if number % 10 == 0:
                 return self.tens[number // 10]
-            return self.tens[number // 10] + "-" + self.units[number % 10]
+            return f"{self.tens[number // 10]}{self.__add_helper_word(number, lang)}{self.units[number % 10]}"
+
+    @staticmethod
+    def __add_helper_word(number, lang):
+        if lang == "fr" and number % 10 == 1 and number not in [81, 91]:
+            return "-et-"
+        else:
+            return "-"
 
     def convert_thousands(self, number, lang):
         """

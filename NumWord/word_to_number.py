@@ -18,7 +18,7 @@ class WordToNumber:
             int | float: The numerical representation of the number.
         """
         self.__get_words(lang)
-        words = words.replace("-", " ").split()
+        words = self.__remove_helper_word(words.replace("-", " ").split(), lang)
         total, current, decimal_part, decimal_place = 0, 0, 0, 0.1
         is_decimal, is_negative = False, False
 
@@ -116,10 +116,19 @@ class WordToNumber:
             total += current
             current = 0
         elif scale >= 100:
+            if current == 0:
+                current = 1
             current *= scale
         else:
             current += scale
         return current, total
+
+    @staticmethod
+    def __remove_helper_word(word_list, lang):
+        helper_words = []
+        if lang == 'fr':
+            helper_words = ['et']
+        return [word for word in word_list if word.lower() not in helper_words]
 
     def __get_words(self, lang):
         """
