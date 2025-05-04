@@ -8,7 +8,7 @@ class TestWordToNum(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.logger = LoggerConfig(__name__).get_logger()
+        cls.logger = LoggerConfig(__name__, file_name="TestLogs/English_test.log").get_logger()
         cls.logger.info("TestWordToNum started.")
         cls.word_to_num = WordToNumber()
 
@@ -85,7 +85,7 @@ class TestNumToWord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.logger = LoggerConfig(__name__).get_logger()
+        cls.logger = LoggerConfig(__name__, file_name="TestLogs/English_test.log").get_logger()
         cls.logger.info("TestNumToWord started.")
         cls.num_to_word = NumberToWord()
 
