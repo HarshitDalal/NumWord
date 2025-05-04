@@ -72,43 +72,47 @@ class Currency:
     def __get_exchange_rate(self, from_currency, to_currency):
         """
         Get exchange rate from stored data.
-
-        Args:
-            from_currency (str): The currency from which to convert.
-            to_currency (str): The currency to which to convert.
-
-        Returns:
-            float: The exchange rate for converting from `from_currency` to `to_currency`.
-
-        Raises:
-            ValueError: If the exchange rate is not available.
         """
+        from_rate = self.__rates.get(from_currency)
+        to_rate = self.__rates.get(to_currency)
+
         if from_currency == self.__BASE_CURRENCY:
-            return self.__rates.get(to_currency)
+            if to_rate is None:
+                return None
+            return to_rate
+
         elif to_currency == self.__BASE_CURRENCY:
-            return 1 / self.__rates.get(from_currency)
-        else:
-            return self.__rates.get(to_currency) / self.__rates.get(from_currency)
+            if from_rate is None:
+                return None
+            return 1 / from_rate
+
+        if from_rate is None or to_rate is None:
+            return None
+
+        return to_rate / from_rate
 
     def convert(self, amount, from_currency, to_currency, with_symbol=True):
         """
         Convert an amount from one currency to another.
-
-        Args:
-            amount (float): The amount of money to convert.
-            from_currency (str): The currency to convert from.
-            to_currency (str): The currency to convert to.
-            with_symbol (bool): Whether to include the currency symbol in the result (default is `True`).
-
-        Returns:
-            str: The converted amount formatted as a string, with or without the currency symbol.
-
-        Raises:
-            ValueError: If the exchange rate for the currencies is not found.
         """
+        invalid_currencies = []
+        if from_currency not in self.__rates:
+            invalid_currencies.append(from_currency)
+        if to_currency not in self.__rates:
+            invalid_currencies.append(to_currency)
+
+        if invalid_currencies:
+            raise ValueError(f"Invalid currency code(s): {', '.join(invalid_currencies)}")
+
         rate = self.__get_exchange_rate(from_currency, to_currency)
-        if rate is None:
-            raise ValueError("Invalid currency or rate not found")
+
         converted_amount = amount * rate
-        return f'{converted_amount:.2f} {to_currency}' if not with_symbol else \
-            f'{CURRENCY_SYMBOLS[to_currency]} {converted_amount:.2f}'
+
+        if with_symbol:
+            symbol = CURRENCY_SYMBOLS.get(to_currency)
+            if not symbol:
+                raise ValueError(f"Currency symbol not found for '{to_currency}'")
+            return f'{symbol} {converted_amount:.2f}'
+        else:
+            return f'{converted_amount:.2f} {to_currency}'
+
