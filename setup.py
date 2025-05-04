@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='NumWord',
-    version='0.0.4',
+    version='0.0.5',
     packages=find_packages(),
     install_requires=[],
     author='Harshit Dalal',
@@ -18,7 +18,7 @@ setup(
     ],
     keywords=[
         'number', 'word', 'conversion', 'numbers2words',
-        'number to word', 'word to number', 'num2words', 'words2number'
+        'number to word', 'word to number', 'num2words', 'words2number', 'numword'
     ],
     python_requires='>=3.6',
 )
