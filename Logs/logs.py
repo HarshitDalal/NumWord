@@ -15,7 +15,7 @@ class LoggerConfig(logging.Logger):
         Args:
             app_name (str): Name of the application.
             streams (tuple, optional): List of streams to log to. Options are ('file', ) or ('console', 'file') Default is ('console', ).
-            file_name (str, optional): Name of the log file, default is 'SAM.log'.
+            file_name (str, optional): Name of the log file, default is 'NumWord.log'.
         """
         super().__init__(app_name)
         self.__app_name = app_name
