@@ -21,7 +21,7 @@
   - French (`fr`)
 - Convert numbers to humanized formats:
   - `1500000` → `1.5M`
-  - `1.5M` → `10L` / `10 लाख`
+  - `1.5M` → `15L` / `15 लाख`
 - Convert currencies from one to another (using live exchange rates).
 
 ---
