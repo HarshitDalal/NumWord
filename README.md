@@ -2,10 +2,11 @@
 
 ![Manual Test](https://github.com/HarshitDalal/numword/actions/workflows/manual_test.yml/badge.svg)
 ![Daily Test](https://github.com/HarshitDalal/numword/actions/workflows/daily_test.yml/badge.svg)
-![PyPI](https://img.shields.io/pypi/v/NumWord)
+![pypi](https://img.shields.io/pypi/v/NumWord.svg)
 ![PyPI Downloads](https://img.shields.io/pypi/dm/NumWord)
-![License MIT](https://img.shields.io/github/license/HarshitDalal/numword)
+![License MIT](https://img.shields.io/github/license/HarshitDalal/NumWord)
 ![codecov](https://codecov.io/gh/HarshitDalal/NumWord/graph/badge.svg?token=3DAOLLEYO3)
+![versions](https://img.shields.io/pypi/pyversions/NumWord.svg)
 
 **NumWord** is a Python package that converts numbers written in words to their numeric representation and vice versa.
 
